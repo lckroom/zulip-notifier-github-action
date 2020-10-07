@@ -1,6 +1,6 @@
 {
   "name": "zulip-notifier-github-action",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Zulip Notifier GitHub Action",
   "main": "lib/main.js",
@@ -10,8 +10,8 @@
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
-    "test": "echo 'TODO: Test harness left in place, no tests for the moment'",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+    "test": "act --secret-file .env -j test",
+    "all": "npm run build && npm run format && npm run lint && npm run package"
   },
   "repository": {
     "type": "git",

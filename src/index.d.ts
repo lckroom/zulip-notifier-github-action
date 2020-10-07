@@ -1,1 +1,1 @@
-declare module 'zulip-js'
+// declare module 'zulip-js'

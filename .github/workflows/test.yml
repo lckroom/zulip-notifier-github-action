@@ -24,6 +24,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           api-key: ${{ secrets.API_KEY }}
           url: ${{ secrets.URL }}
-          stream: ${{ secrets.STREAM_NAME }}
-          topic: "CI Notifications"
-          message: "Test run from CI"
+          stream: ${{ secrets.STREAM }}
+          topic: ${{ secrets.TOPIC }}
+          message: "Test workflow completed successfully"

@@ -5,6 +5,8 @@ import * as core from '@actions/core'
 import Zulip from 'zulip-js'
 
 async function run(): Promise<void> {
+  core.debug('Executing run')
+
   // assemble our configuration before before awaiting anything to catch early input errors
   const config = {
     client: {
@@ -20,9 +22,18 @@ async function run(): Promise<void> {
     }
   }
 
+  core.debug(`Config: ${JSON.stringify(config)}`)
+
   const client = await Zulip(config.client)
-  const result = await client.messages.send(config.message)
-  core.info(result)
+  core.debug(`Client has been constructed`)
+
+  const {result, msg} = await client.messages.send(config.message)
+
+  if (result === 'error') {
+    core.setFailed(msg)
+  } else {
+    core.info(`Result: ${JSON.stringify(result)}`)
+  }
 }
 
 // `catch` used in this way is safer/more robust than wrapping the contents of `run` in a try-catch

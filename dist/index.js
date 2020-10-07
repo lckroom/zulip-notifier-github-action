@@ -514,31 +514,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(186));
+// FIXME create types for zulip-js
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const zulip_js_1 = __importDefault(__webpack_require__(917));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const client_config = {
+        core.debug('Executing run');
+        // assemble our configuration before before awaiting anything to catch early input errors
+        const config = {
+            client: {
                 username: core.getInput('username'),
                 apiKey: core.getInput('api-key'),
-                realm: core.getInput('realm')
-            };
-            const message_config = {
+                realm: core.getInput('url')
+            },
+            message: {
                 type: 'stream',
                 to: core.getInput('stream'),
                 topic: core.getInput('topic'),
                 content: core.getInput('message')
-            };
-            const client = yield zulip_js_1.default(client_config);
-            const result = yield client.messages.send(message_config);
-            core.info(result);
+            }
+        };
+        core.debug(`Config: ${JSON.stringify(config)}`);
+        const client = yield zulip_js_1.default(config.client);
+        core.debug(`Client has been constructed`);
+        const { result, msg } = yield client.messages.send(config.message);
+        if (result === 'error') {
+            core.setFailed(msg);
         }
-        catch (error) {
-            core.setFailed(error.message);
+        else {
+            core.info(`Result: ${JSON.stringify(result)}`);
         }
     });
 }
-run();
+// `catch` used in this way is safer/more robust than wrapping the contents of `run` in a try-catch
+// eslint-disable-next-line github/no-then
+run().catch(core.setFailed);
 
 
 /***/ }),
@@ -8166,6 +8177,7 @@ function zulip(initialConfig) {
 }
 
 module.exports = zulip;
+
 
 /***/ }),
 
