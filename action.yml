@@ -1,0 +1,26 @@
+name: 'Zulip Notifier Action'
+description: 'Sends a message to a Zulip topic'
+author: 'Jesse Savary'
+inputs:
+  username:
+    required: true
+    description: 'Your Zulip username'
+  api-key:
+    required: true
+    description: 'Your Zulip API key'
+  stream:
+    required: true
+    description: 'Name of the stream where messages will be sent'
+  topic:
+    required: true
+    description: 'Name of the topic within the stream where messages will be sent'
+    default: 'Zulip Notifier Github Action'
+  url:
+    required: true
+    description: 'The URL for your Zulip organization'
+  message:
+    required: true
+    description: 'The message to send'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
