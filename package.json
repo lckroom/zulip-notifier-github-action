@@ -1,17 +1,17 @@
 {
   "name": "zulip-notifier-github-action",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Zulip Notifier GitHub Action",
   "main": "lib/main.js",
   "scripts": {
+    "act": "act --secret-file .secrets -j test",
+    "all": "yarn build && yarn format && yarn lint && yarn package",
     "build": "tsc",
-    "format": "prettier --write **/*.ts",
-    "format-check": "prettier --check **/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "format-check": "prettier --check src/**/*.ts",
     "lint": "eslint src/**/*.ts",
-    "package": "ncc build --source-map --license licenses.txt",
-    "test": "act --secret-file .env -j test",
-    "all": "npm run build && npm run format && npm run lint && npm run package"
+    "package": "ncc build --source-map --license licenses.txt"
   },
   "repository": {
     "type": "git",
@@ -22,25 +22,21 @@
     "node",
     "zulip"
   ],
-  "author": "",
+  "author": "Jesse Savary",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "zulip-js": "^2.0.8"
+    "@actions/core": "1.2.6",
+    "zulip-js": "2.0.8"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.10",
-    "@types/node": "^14.10.0",
-    "@typescript-eslint/parser": "^3.10.1",
-    "@vercel/ncc": "^0.23.0",
-    "eslint": "^7.8.1",
-    "eslint-plugin-github": "^4.1.1",
-    "eslint-plugin-jest": "^23.20.0",
-    "jest": "^24.9.0",
-    "jest-circus": "^26.4.2",
-    "js-yaml": "^3.14.0",
-    "prettier": "2.1.1",
-    "ts-jest": "^24.3.0",
-    "typescript": "^4.0.2"
+    "@types/node": "14.11.5",
+    "@typescript-eslint/parser": "4.4.0",
+    "@vercel/ncc": "0.24.1",
+    "eslint": "7.10.0",
+    "eslint-plugin-github": "4.1.1",
+    "eslint-plugin-prettier": "3.1.4",
+    "js-yaml": "3.14.0",
+    "prettier": "2.1.2",
+    "typescript": "4.0.3"
   }
 }

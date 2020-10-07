@@ -2,6 +2,10 @@ name: 'Zulip Notifier GitHub Action'
 description: 'Sends a message to a Zulip topic'
 author: 'Jesse Savary'
 inputs:
+  zuliprc:
+    required: true
+    description: 'Path to your .zuliprc file'
+    default: '.zuliprc'
   username:
     required: true
     description: 'Your Zulip username'
