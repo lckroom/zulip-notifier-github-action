@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
+  "name": "zulip-notifier-github-action",
   "version": "0.1.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Zulip Notifier GitHub Action",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/lckroom/zulip-notifier-github-action"
   },
   "keywords": [
     "actions",
     "node",
-    "setup"
+    "zulip"
   ],
   "author": "",
   "license": "MIT",

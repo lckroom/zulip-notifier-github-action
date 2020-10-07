@@ -1,4 +1,4 @@
-name: 'Zulip Notifier Action'
+name: 'Zulip Notifier GitHub Action'
 description: 'Sends a message to a Zulip topic'
 author: 'Jesse Savary'
 inputs:
