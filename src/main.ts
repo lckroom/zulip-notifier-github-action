@@ -6,7 +6,7 @@ async function run(): Promise<void> {
     const client_config = {
       username: core.getInput('username'),
       apiKey: core.getInput('api-key'),
-      realm: core.getInput('realm')
+      realm: core.getInput('url')
     }
 
     const message_config = {
