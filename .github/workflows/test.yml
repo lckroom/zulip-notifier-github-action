@@ -26,4 +26,39 @@ jobs:
           url: ${{ secrets.URL }}
           stream: ${{ secrets.STREAM }}
           topic: ${{ secrets.TOPIC }}
-          message: "Test workflow completed successfully"
+          message: |-
+            Message from test workflow using mutli-line YAML string to ensure we can send fully formatted Zulip messages
+
+            Text formatting: *italic* **bold** ~~strikethrough~~
+
+            Links: [Zulip website](https://zulip.org)
+
+            Emojis (from [Noto Emoji](https://www.google.com/get/noto/help/emoji)): :heart: :monkey: :grapes:
+
+            Spoilers:
+            ```spoiler Always visible heading
+            This text won't be visible until the user clicks.
+            ```
+
+            Unordered, ordered, and nested lists:
+            * Milk
+            * Tea
+              1. Green tea
+              1. Black tea
+              1. Oolong tea
+            * Coffee
+
+            Code blocks with syntax highlighting:
+            ```json
+            {
+              "foo": "bar"
+            }
+            ```
+
+            Tables:
+
+            | Tables        | Are           | Cool  |
+            | ------------- |:-------------:| -----:|
+            | col 3 is      | right-aligned | $1600 |
+            | col 2 is      | centered      |   $12 |
+            | zebra stripes | are neat      |    $1 |
